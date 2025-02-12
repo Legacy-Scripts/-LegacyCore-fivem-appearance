@@ -35,7 +35,7 @@ shared_scripts {
 }
 
 dependencies {
-  'es_extended',
+
   'oxmysql',
   'ox_lib'
 }

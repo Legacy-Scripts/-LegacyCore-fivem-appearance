@@ -5,7 +5,7 @@
 closeMenu = function()
     RenderScriptCams(false, false, 0, true, true)
     DestroyAllCams(true)
-    DisplayRadar(true)
+
     SetNuiFocus(false, false)
     SetEntityInvincible(PlayerPedId(), false)
 
@@ -17,8 +17,7 @@ closeMenu = function()
 end
 
 addCommas = function(n)
-	return tostring(math.floor(n)):reverse():gsub("(%d%d%d)","%1,")
-								  :gsub(",(%-?)$","%1"):reverse()
+	return tostring(math.floor(n)):reverse():gsub("(%d%d%d)","%1,")						  :gsub(",(%-?)$","%1"):reverse()
 end
 
 createBlip = function(coords, sprite, color, text, scale)
@@ -114,9 +113,9 @@ openShop = function(store, price)
                             icon = 'basket-shopping',
                             type = 'success'
                         })
-                        TriggerServerEvent('fivem-appearance:save', appearance)
+                        TriggerServerEvent('fivem-appearance:save', appearance,SLOT)
                         InMenu = false
-                        ESX.SetPlayerData('ped', PlayerPedId())
+   
                     else
                         lib.notify({
                             title = Strings.no_funds,
@@ -127,16 +126,16 @@ openShop = function(store, price)
                         })                           
                         exports['fivem-appearance']:setPlayerAppearance(currentAppearance)
                         InMenu = false
-                        TriggerServerEvent('fivem-appearance:save',currentAppearance)
-                        ESX.SetPlayerData('ped', PlayerPedId())
+                        TriggerServerEvent('fivem-appearance:save',currentAppearance,SLOT)
+        
                     end
                 else
-                    TriggerServerEvent('fivem-appearance:save', appearance)
+                    TriggerServerEvent('fivem-appearance:save', appearance,SLOT)
                     InMenu = false
-                    ESX.SetPlayerData('ped', PlayerPedId())
+        
                 end
             else
-                ESX.SetPlayerData('ped', PlayerPedId())
+    
                 inMenu = false
             end
         end, config)
